@@ -87,6 +87,9 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```
 
 3.  **Installer les dépendances du projet :**
+
+    cd zynlix/
+    
     ```bash
     # Installer toutes les dépendances (production + développement)
     npm ci
@@ -150,9 +153,8 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     export default {
       apps: [{
         name: 'zynlix-app',
-        script: 'dist/index.js',
+        script: './dist/index.js',
         cwd: '/home/zynlix/zynlix',
-        user: 'zynlix',
         instances: 1,
         autorestart: true,
         watch: false,
@@ -160,13 +162,14 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
         env: {
           NODE_ENV: 'production',
           PORT: 3000
-        },
-        error_file: '/home/zynlix/zynlix/logs/err.log',
-        out_file: '/home/zynlix/zynlix/logs/out.log',
-        log_file: '/home/zynlix/zynlix/logs/combined.log',
-        time: true
+        }
       }]
     };
+    ```
+    
+    **Important :** Si PM2 donne l'erreur "No script path", utilisez cette commande alternative :
+    ```bash
+    pm2 start ./dist/index.js --name zynlix-app
     ```
 
 2.  **Créer le dossier des logs :**
