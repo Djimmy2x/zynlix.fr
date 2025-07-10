@@ -7,6 +7,7 @@ await build({
   format: 'esm',
   outdir: 'dist',
   external: [
+    // Dependencies
     'connect-pg-simple',
     'express-session',
     'passport',
@@ -17,9 +18,30 @@ await build({
     'express',
     'cors',
     'helmet',
-    'dotenv'
+    'dotenv',
+    // Problematic packages
+    '@babel/*',
+    'lightningcss',
+    'esbuild',
+    'vite',
+    'typescript',
+    'tsx',
+    // React and frontend packages
+    'react',
+    'react-dom',
+    '@radix-ui/*',
+    '@tanstack/*',
+    'framer-motion',
+    'lucide-react',
+    'wouter',
+    'tailwindcss',
+    'tailwindcss-animate',
+    'class-variance-authority',
+    'clsx',
+    'tailwind-merge'
   ],
   define: {
     'process.env.NODE_ENV': '"production"'
-  }
+  },
+  logLevel: 'info'
 }); 
