@@ -121,7 +121,7 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     DATABASE_URL="postgresql://test:test@localhost:5432/zynlix"
     
     # Alternative pour test sans base de données :
-    # NODE_ENV=development
+    NODE_ENV=development
     
     # Configuration de l'application
     NODE_ENV=production
@@ -190,6 +190,24 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     **Vérifier les logs après démarrage :**
     ```bash
     pm2 logs zynlix-app --lines 20
+    ```
+    
+    **Diagnostic complet si l'application ne répond pas :**
+    ```bash
+    # 1. Nettoyer les instances PM2
+    pm2 delete all
+    
+    # 2. Installer les dépendances manquantes
+    npm install express cors helmet
+    
+    # 3. Recompiler avec le mode développement
+    npm run build
+    
+    # 4. Tester directement
+    node dist/index.js
+    
+    # 5. Redémarrer PM2
+    pm2 start ./dist/index.js --name zynlix-app
     ```
 
 2.  **Créer le dossier des logs :**
