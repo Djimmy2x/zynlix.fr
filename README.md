@@ -87,15 +87,24 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```
 
 3.  **Installer les dépendances du projet :**
-
+    ```bash
     cd zynlix/
     
-    ```bash
     # Installer toutes les dépendances (production + développement)
     npm ci
     
     # Vérifier que bcrypt est installé
     npm list bcrypt
+    
+    # Si bcrypt n'est pas installé, l'installer manuellement
+    npm install bcrypt
+    
+    # Installer toutes les dépendances manquantes
+    npm install dotenv express cors helmet express-rate-limit
+    
+    # Recompiler avec la nouvelle configuration esbuild
+    npm run build
+    ```
     ```
 
 4.  **Configurer les variables d'environnement :**
@@ -240,6 +249,12 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     
     # Tester le processus directement
     node dist/index.js
+    
+    # Vérifier les variables d'environnement
+    cat .env
+    
+    # Vérifier si l'application écoute
+    sudo lsof -i :3000
     ```
 
 5.  **Tester depuis l'extérieur :**
