@@ -1,6 +1,6 @@
 # **Guide de Déploiement sur Debian 12**
 
-Ce guide détaille les étapes pour déployer l'application **BusinessInfoHub** (Zynlix) sur un serveur Debian 12 en utilisant Node.js et PM2.
+Ce guide détaille les étapes pour déployer l'application **Zynlix** sur un serveur Debian 12 en utilisant Node.js et PM2.
 
 ## **Prérequis**
 
@@ -27,8 +27,8 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 3.  **Créer un utilisateur dédié pour l'application :**
     ```bash
-    sudo adduser --system --group --home /opt/businessinfohub businessinfohub
-    sudo usermod -s /bin/bash businessinfohub
+    sudo adduser --system --group --home /home/zynlix zynlix
+    sudo usermod -s /bin/bash zynlix
     ```
 
 4.  **Installer Node.js v20.x :**
@@ -57,7 +57,7 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
     sudo ufw allow ssh
-    sudo ufw allow 5000/tcp
+    sudo ufw allow 3000/tcp
     sudo ufw --force enable
     ```
 
@@ -72,17 +72,18 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 1.  **Passer à l'utilisateur dédié et naviguer vers le répertoire home :**
     ```bash
-    sudo su - businessinfohub
-    cd /opt/businessinfohub
+    sudo su - zynlix
+    cd /home/zynlix
     ```
 
 2.  **Cloner le projet depuis GitHub :**
-    Remplacez `VOTRE_URL_GITHUB` par l'URL de votre dépôt.
     ```bash
-    git clone VOTRE_URL_GITHUB .
-    # Ou si vous clonez dans un sous-dossier :
-    # git clone VOTRE_URL_GITHUB BusinessInfoHub
-    # cd BusinessInfoHub
+    git clone https://github.com/Djimmy2x/zynlix.fr.git .
+    ```
+    
+    **Note :** Si vous avez besoin d'authentification, utilisez votre token GitHub :
+    ```bash
+    git clone https://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@github.com/Djimmy2x/zynlix.fr.git .
     ```
 
 3.  **Installer les dépendances du projet :**
@@ -102,7 +103,7 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     
     # Configuration de l'application
     NODE_ENV=production
-    PORT=5000
+    PORT=3000
     HOST=0.0.0.0
     
     # Sécurité (générez des clés sécurisées)
@@ -142,21 +143,21 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```javascript
     module.exports = {
       apps: [{
-        name: 'business-info-hub',
+        name: 'zynlix-app',
         script: 'dist/index.js',
-        cwd: '/opt/businessinfohub',
-        user: 'businessinfohub',
+        cwd: '/home/zynlix',
+        user: 'zynlix',
         instances: 1,
         autorestart: true,
         watch: false,
         max_memory_restart: '1G',
         env: {
           NODE_ENV: 'production',
-          PORT: 5000
+          PORT: 3000
         },
-        error_file: '/opt/businessinfohub/logs/err.log',
-        out_file: '/opt/businessinfohub/logs/out.log',
-        log_file: '/opt/businessinfohub/logs/combined.log',
+        error_file: '/home/zynlix/logs/err.log',
+        out_file: '/home/zynlix/logs/out.log',
+        log_file: '/home/zynlix/logs/combined.log',
         time: true
       }]
     };
@@ -175,12 +176,12 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 4.  **Revenir à l'utilisateur root pour configurer PM2 au démarrage :**
     ```bash
     exit  # Retour à l'utilisateur root
-    sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u businessinfohub --hp /opt/businessinfohub
+    sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u zynlix --hp /home/zynlix
     ```
 
 5.  **Sauvegarder la configuration PM2 :**
     ```bash
-    sudo su - businessinfohub
+    sudo su - zynlix
     pm2 save
     exit
     ```
@@ -191,28 +192,28 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 1.  **Vérifier le statut de PM2 :**
     ```bash
-    sudo su - businessinfohub -c "pm2 status"
+    sudo su - zynlix -c "pm2 status"
     ```
 
 2.  **Vérifier que l'application écoute sur le bon port :**
     ```bash
-    sudo netstat -tlnp | grep :5000
+    sudo netstat -tlnp | grep :3000
     # Ou avec ss (plus moderne) :
-    sudo ss -tlnp | grep :5000
+    sudo ss -tlnp | grep :3000
     ```
 
 3.  **Tester l'application localement :**
     ```bash
-    curl http://localhost:5000
+    curl http://localhost:3000
     ```
 
 4.  **Vérifier les logs en cas de problème :**
     ```bash
-    sudo su - businessinfohub -c "pm2 logs business-info-hub"
+    sudo su - zynlix -c "pm2 logs zynlix-app"
     ```
 
 5.  **Tester depuis l'extérieur :**
-    Accédez à `http://<IP_DU_SERVEUR>:5000` depuis votre navigateur.
+    Accédez à `http://<IP_DU_SERVEUR>:3000` depuis votre navigateur.
 
 ---
 
@@ -220,17 +221,17 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 1.  **Consulter les logs PM2 :**
     ```bash
-    sudo su - businessinfohub -c "pm2 logs"
+    sudo su - zynlix -c "pm2 logs"
     ```
 
 2.  **Consulter les logs système :**
     ```bash
-    sudo journalctl -u pm2-businessinfohub -f
+    sudo journalctl -u pm2-zynlix -f
     ```
 
 3.  **Rotation des logs (optionnel) :**
     ```bash
-    sudo su - businessinfohub -c "pm2 install pm2-logrotate"
+    sudo su - zynlix -c "pm2 install pm2-logrotate"
     ```
 
 ---
@@ -239,13 +240,18 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 1.  **Connexion et navigation :**
     ```bash
-    sudo su - businessinfohub
-    cd /opt/businessinfohub
+    sudo su - zynlix
+    cd /home/zynlix
     ```
 
 2.  **Mettre à jour le code :**
     ```bash
     git pull origin main
+    ```
+    
+    **Note :** Si vous avez besoin d'authentification pour les pulls :
+    ```bash
+    git pull https://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@github.com/Djimmy2x/zynlix.fr.git main
     ```
 
 3.  **Installer les nouvelles dépendances :**
@@ -260,13 +266,13 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 5.  **Redémarrer l'application :**
     ```bash
-    pm2 restart business-info-hub
+    pm2 restart zynlix-app
     ```
 
 6.  **Vérifier le statut :**
     ```bash
     pm2 status
-    pm2 logs business-info-hub --lines 20
+    pm2 logs zynlix-app --lines 20
     ```
 
 ---
@@ -277,27 +283,27 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 1.  **Port déjà utilisé :**
     ```bash
-    sudo netstat -tlnp | grep :5000
+    sudo netstat -tlnp | grep :3000
     sudo kill -9 <PID>
     ```
 
 2.  **Permissions de fichiers :**
     ```bash
-    sudo chown -R businessinfohub:businessinfohub /opt/businessinfohub
-    sudo chmod -R 755 /opt/businessinfohub
-    sudo chmod 600 /opt/businessinfohub/.env
+    sudo chown -R zynlix:zynlix /home/zynlix
+    sudo chmod -R 755 /home/zynlix
+    sudo chmod 600 /home/zynlix/.env
     ```
 
 3.  **Base de données inaccessible :**
     ```bash
     # Tester la connexion
-    sudo su - businessinfohub -c "node -e \"console.log(process.env.DATABASE_URL)\""
+    sudo su - zynlix -c "node -e \"console.log(process.env.DATABASE_URL)\""
     ```
 
 4.  **Redémarrage complet :**
     ```bash
-    sudo su - businessinfohub -c "pm2 delete all"
-    sudo su - businessinfohub -c "pm2 start ecosystem.config.js"
+    sudo su - zynlix -c "pm2 delete all"
+    sudo su - zynlix -c "pm2 start ecosystem.config.js"
     ```
 
 ---
@@ -334,6 +340,6 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 ---
 
-**Note :** Ce guide assume que vous n'utilisez pas de reverse proxy (nginx) et que l'application est directement accessible sur le port 5000. Pour un environnement de production, il est recommandé d'ajouter un reverse proxy avec SSL/TLS.
-#   z y n l i x . f r  
- 
+**Note :** Ce guide assume que vous n'utilisez pas de reverse proxy (nginx) et que l'application est directement accessible sur le port 3000. Pour un environnement de production, il est recommandé d'ajouter un reverse proxy avec SSL/TLS.
+
+# zynlix.fr
