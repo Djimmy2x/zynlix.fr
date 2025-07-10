@@ -66,7 +66,7 @@ export class DatabaseStorage implements IStorage {
 
   constructor() {
     if (!process.env.DATABASE_URL) {
-      throw new Error("DATABASE_URL environment variable is required");
+      throw new Error("DATABASE_URL environment variable is required for DatabaseStorage");
     }
     const sql = neon(process.env.DATABASE_URL);
     this.db = drizzle(sql);
@@ -97,7 +97,30 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-// Use DatabaseStorage if DATABASE_URL is available, otherwise fallback to MemStorage
-export const storage = process.env.DATABASE_URL 
-  ? new DatabaseStorage() 
-  : new MemStorage();
+// Sélection intelligente du stockage
+function createStorage(): IStorage {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const hasDatabaseUrl = !!process.env.DATABASE_URL;
+
+  if (isProduction && !hasDatabaseUrl) {
+    throw new Error("DATABASE_URL is required in production environment");
+  }
+
+  if (hasDatabaseUrl) {
+    try {
+      return new DatabaseStorage();
+    } catch (error) {
+      console.error("Failed to initialize DatabaseStorage:", error);
+      if (isProduction) {
+        throw new Error("Cannot start in production without database connection");
+      }
+      console.warn("Falling back to MemStorage for development");
+      return new MemStorage();
+    }
+  }
+
+  console.warn("No DATABASE_URL provided, using MemStorage (data will be lost on restart)");
+  return new MemStorage();
+}
+
+export const storage = createStorage();

@@ -1,4 +1,5 @@
 import { Server, Shield, Users, Network, BarChart, Settings } from "lucide-react";
+import { AnimatedBackground } from "@/components/ui/animated-background";
 
 export default function Services() {
   const services = [
@@ -71,13 +72,23 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="services" className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <div className="relative text-center mb-16">
+          {/* GIF animé en arrière-plan subtil du titre */}
+          <AnimatedBackground
+            gifSrc="Services.gif"
+            alt="Animation des services IT"
+            opacity={0.06}
+            position="center"
+            size="large"
+            className="animate-pulse"
+          />
+          
+          <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 z-10">
             Nos Services d'Infogérance
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="relative text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto z-10">
             Des solutions complètes pour optimiser, sécuriser et faire évoluer votre infrastructure informatique
           </p>
         </div>

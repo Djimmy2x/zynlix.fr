@@ -29,14 +29,25 @@ export default function Navigation() {
     setIsMenuOpen(false);
   };
 
+  const navigateToHome = () => {
+    // Si on est déjà sur la page d'accueil, on scroll vers le haut
+    if (window.location.pathname === '/') {
+      scrollToSection("accueil");
+    } else {
+      // Sinon on navigue vers la page d'accueil
+      navigateToPage("/");
+    }
+  };
+
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <button
-              onClick={() => scrollToSection("accueil")}
+              onClick={navigateToHome}
               className="flex items-center hover:opacity-80 transition-opacity duration-200"
+              title="Retour à l'accueil"
             >
               <img
                 src="./src/assets/logo.png"

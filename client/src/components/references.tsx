@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { OptimizedAvatar } from "@/components/ui/optimized-image";
 
 export default function References() {
   const testimonials = [
@@ -73,10 +74,11 @@ export default function References() {
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-6 italic">"{testimonial.content}"</p>
               <div className="flex items-center">
-                <img
+                <OptimizedAvatar
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                  size="md"
+                  className="mr-4"
                 />
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>

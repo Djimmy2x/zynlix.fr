@@ -1,11 +1,62 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import passport from "passport";
 import { storage } from "./storage";
+import { requireAuth, requireAdmin } from "./auth";
 import { insertContactSubmissionSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Contact form submission
+  // Route de login
+  app.post("/api/auth/login", (req, res, next) => {
+    passport.authenticate('local', (err: any, user: any, info: any) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: "Erreur serveur" });
+      }
+      
+      if (!user) {
+        return res.status(401).json({ 
+          success: false, 
+          message: info?.message || "Identifiants incorrects" 
+        });
+      }
+      
+      req.logIn(user, (err) => {
+        if (err) {
+          return res.status(500).json({ success: false, message: "Erreur de connexion" });
+        }
+        res.json({ 
+          success: true, 
+          message: "Connexion réussie",
+          user: { id: user.id, username: user.username, role: user.role }
+        });
+      });
+    })(req, res, next);
+  });
+
+  // Route de logout
+  app.post("/api/auth/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json({ success: false, message: "Erreur de déconnexion" });
+      }
+      res.json({ success: true, message: "Déconnexion réussie" });
+    });
+  });
+
+  // Route pour vérifier l'état de l'authentification
+  app.get("/api/auth/status", (req, res) => {
+    if (req.isAuthenticated()) {
+      res.json({ 
+        authenticated: true, 
+        user: { id: req.user.id, username: req.user.username, role: req.user.role }
+      });
+    } else {
+      res.json({ authenticated: false });
+    }
+  });
+
+  // Contact form submission (publique)
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactSubmissionSchema.parse(req.body);
@@ -23,8 +74,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get all contact submissions (for admin purposes)
-  app.get("/api/contact", async (req, res) => {
+  // Get all contact submissions (protégé par authentification admin)
+  app.get("/api/contact", requireAdmin, async (req, res) => {
     try {
       const submissions = await storage.getAllContactSubmissions();
       res.json(submissions);

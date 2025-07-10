@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AnimatedBackground } from "@/components/ui/animated-background";
 
 export default function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -9,8 +10,18 @@ export default function Hero() {
   };
 
   return (
-    <section id="accueil" className="bg-gradient-to-br from-[hsl(var(--light-blue))] to-white dark:from-gray-800 dark:to-gray-900 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="accueil" className="relative bg-gradient-to-br from-[hsl(var(--light-blue))] to-white dark:from-gray-800 dark:to-gray-900 py-20 overflow-hidden">
+      {/* GIF animé en arrière-plan subtil */}
+      <AnimatedBackground
+        gifSrc="ACCEUIL.gif"
+        alt="Animation d'accueil dynamique"
+        opacity={0.08}
+        position="top-right"
+        size="large"
+        className="animate-pulse"
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
           <div className="mb-12 lg:mb-0 animate-fade-in-up">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -51,11 +62,21 @@ export default function Hero() {
             </div>
           </div>
           <div className="relative animate-fade-in-scale">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-              alt="Modern IT office workspace"
-              className="rounded-xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
-            />
+            <picture>
+              <source 
+                srcSet="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&fm=webp&q=80" 
+                type="image/webp" 
+              />
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80"
+                alt="Modern IT office workspace"
+                className="rounded-xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
+                loading="eager"
+                decoding="async"
+                width="800"
+                height="600"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-xl"></div>
           </div>
         </div>

@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { DecorativeGif } from "@/components/ui/animated-background";
 
 const contactFormSchema = z.object({
   nom: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -102,12 +103,28 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Contactez-Nous
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            Prêt à transformer votre infrastructure IT ? Échangeons sur votre projet
-          </p>
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <DecorativeGif
+              gifSrc="contact.gif"
+              alt="Animation de contact et communication"
+              size="medium"
+              className="hidden sm:block"
+            />
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Contactez-Nous
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                Prêt à transformer votre infrastructure IT ? Échangeons sur votre projet
+              </p>
+            </div>
+            <DecorativeGif
+              gifSrc="contact.gif"
+              alt="Animation de contact et communication"
+              size="medium"
+              className="hidden sm:block scale-x-[-1]"
+            />
+          </div>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12">

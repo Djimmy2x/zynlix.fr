@@ -2,6 +2,7 @@ import { Briefcase, MapPin, Clock, Users, Heart, Zap, Award, GraduationCap, Arro
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { DecorativeGif } from "@/components/ui/animated-background";
 
 export default function Careers() {
   const openPositions = [
@@ -145,13 +146,29 @@ export default function Careers() {
     <div className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Carrières chez Zynlix
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Rejoignez une équipe passionnée et contribuez à façonner l'avenir de l'IT. 
-            Chez Zynlix, votre talent trouve sa place dans un environnement stimulant et bienveillant.
-          </p>
+          <div className="flex justify-center items-center gap-6 mb-6">
+            <DecorativeGif
+              gifSrc="carrieres.png"
+              alt="Illustration des carrières et opportunités"
+              size="medium"
+              className="opacity-80"
+            />
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Carrières chez Zynlix
+              </h1>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Rejoignez une équipe passionnée et contribuez à façonner l'avenir de l'IT. 
+                Chez Zynlix, votre talent trouve sa place dans un environnement stimulant et bienveillant.
+              </p>
+            </div>
+            <DecorativeGif
+              gifSrc="carrieres.png"
+              alt="Illustration des carrières et opportunités"
+              size="medium"
+              className="opacity-80 scale-x-[-1]"
+            />
+          </div>
         </div>
 
         {/* Nos valeurs */}
