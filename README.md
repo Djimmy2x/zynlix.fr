@@ -223,6 +223,21 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```bash
     sudo su - zynlix -c "pm2 logs zynlix-app"
     ```
+    
+    **Diagnostic complet :**
+    ```bash
+    # Vérifier le statut PM2
+    pm2 status
+    
+    # Voir les logs détaillés
+    pm2 logs zynlix-app --lines 50
+    
+    # Vérifier si le port est utilisé
+    sudo netstat -tlnp | grep :3000
+    
+    # Tester le processus directement
+    node dist/index.js
+    ```
 
 5.  **Tester depuis l'extérieur :**
     Accédez à `http://<IP_DU_SERVEUR>:3000` depuis votre navigateur.
