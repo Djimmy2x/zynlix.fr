@@ -90,6 +90,9 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```bash
     # Installer toutes les dépendances (production + développement)
     npm ci
+    
+    # Vérifier que bcrypt est installé
+    npm list bcrypt
     ```
 
 4.  **Configurer les variables d'environnement :**
@@ -196,6 +199,12 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 1.  **Vérifier le statut de PM2 :**
     ```bash
     sudo su - zynlix -c "pm2 status"
+    ```
+    
+    **Nettoyer les anciennes instances :**
+    ```bash
+    pm2 delete all
+    pm2 start ecosystem.config.js
     ```
 
 2.  **Vérifier que l'application écoute sur le bon port :**
