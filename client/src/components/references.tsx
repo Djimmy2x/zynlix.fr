@@ -46,13 +46,13 @@ export default function References() {
   ];
 
   return (
-    <section id="references" className="py-20 bg-gray-50">
+    <section id="references" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Ils Nous Font Confiance
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Découvrez les témoignages de nos clients satisfaits
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function References() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-xl shadow-lg animate-fade-in-up"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center mb-4">
@@ -71,7 +71,7 @@ export default function References() {
                   ))}
                 </div>
               </div>
-              <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 italic">"{testimonial.content}"</p>
               <div className="flex items-center">
                 <img
                   src={testimonial.image}
@@ -79,8 +79,8 @@ export default function References() {
                   className="w-12 h-12 rounded-full mr-4 object-cover"
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</div>
                 </div>
               </div>
             </div>
@@ -88,8 +88,8 @@ export default function References() {
         </div>
         
         {/* Case Studies */}
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Cas d'Usage
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
@@ -99,10 +99,10 @@ export default function References() {
                 className={`border-l-4 ${study.borderColor} pl-6 animate-fade-in-up`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   {study.title}
                 </h4>
-                <p className="text-gray-600 mb-4">{study.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{study.description}</p>
                 <div className="flex flex-wrap gap-4">
                   {study.tags.map((tag, tagIndex) => (
                     <span

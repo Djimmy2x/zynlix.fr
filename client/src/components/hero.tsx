@@ -9,15 +9,15 @@ export default function Hero() {
   };
 
   return (
-    <section id="accueil" className="bg-gradient-to-br from-[hsl(var(--light-blue))] to-white py-20">
+    <section id="accueil" className="bg-gradient-to-br from-[hsl(var(--light-blue))] to-white dark:from-gray-800 dark:to-gray-900 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
           <div className="mb-12 lg:mb-0 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Votre Partenaire de{" "}
               <span className="text-primary">Confiance</span> en Infogérance
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Nous gérons votre infrastructure IT pour que vous puissiez vous concentrer sur votre cœur de métier. Solutions sécurisées, innovantes et fiables.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -38,15 +38,15 @@ export default function Hero() {
             <div className="mt-12 flex items-center space-x-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">15+</div>
-                <div className="text-sm text-gray-600">Années d'expérience</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Années d'expérience</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary">500+</div>
-                <div className="text-sm text-gray-600">Clients satisfaits</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Clients satisfaits</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">24/7</div>
-                <div className="text-sm text-gray-600">Support technique</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Support technique</div>
               </div>
             </div>
           </div>

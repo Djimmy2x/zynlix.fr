@@ -99,20 +99,20 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Contactez-Nous
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Prêt à transformer votre infrastructure IT ? Échangeons sur votre projet
           </p>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="animate-fade-in-up">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-8">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
               Parlons de Votre Projet
             </h3>
             <Form {...form}>
@@ -248,7 +248,7 @@ export default function Contact() {
           </div>
           
           <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-8">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
               Nos Coordonnées
             </h3>
             <div className="space-y-6">
@@ -260,17 +260,17 @@ export default function Contact() {
                       <Icon className="text-primary w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">{info.title}</h4>
-                      <p className="text-gray-600 whitespace-pre-line">{info.content}</p>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{info.title}</h4>
+                      <p className="text-gray-600 dark:text-gray-300 whitespace-pre-line">{info.content}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
             
-            <div className="mt-12 p-6 bg-[hsl(var(--light-blue))] rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-4">Audit Gratuit</h4>
-              <p className="text-gray-600 mb-4">
+            <div className="mt-12 p-6 bg-[hsl(var(--light-blue))] dark:bg-gray-700 rounded-lg">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Audit Gratuit</h4>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Bénéficiez d'un audit gratuit de votre infrastructure IT pour identifier les axes d'amélioration.
               </p>
               <Button

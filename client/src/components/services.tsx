@@ -71,13 +71,13 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Nos Services d'Infogérance
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Des solutions complètes pour optimiser, sécuriser et faire évoluer votre infrastructure informatique
           </p>
         </div>
@@ -88,17 +88,17 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
+                className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center mb-6">
                   <div className={`w-12 h-12 ${service.color === 'primary' ? 'bg-primary/10' : 'bg-secondary/10'} rounded-lg flex items-center justify-center`}>
                     <Icon className={`${service.color === 'primary' ? 'text-primary' : 'text-secondary'} w-6 h-6`} />
                   </div>
-                  <h3 className="text-xl font-semibold ml-4">{service.title}</h3>
+                  <h3 className="text-xl font-semibold ml-4 text-gray-900 dark:text-white">{service.title}</h3>
                 </div>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300 mb-6">{service.description}</p>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
