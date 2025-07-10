@@ -5,28 +5,28 @@ export default function Footer() {
     {
       title: "Services",
       links: [
-        "Infrastructure & Cloud",
-        "Sécurité & Sauvegarde",
-        "Support Utilisateurs",
-        "Réseau & Télécoms"
+        { name: "Infrastructure & Cloud", path: "/services/infrastructure-cloud" },
+        { name: "Sécurité & Sauvegarde", path: "/services/security-backup" },
+        { name: "Support Utilisateurs", path: "/services/user-support" },
+        { name: "Réseau & Télécoms", path: "/services/network-telecom" }
       ]
     },
     {
       title: "Entreprise",
       links: [
-        "À Propos",
-        "Équipe",
-        "Carrières",
-        "Actualités"
+        { name: "À Propos", path: "/company/about" },
+        { name: "Équipe", path: "/company/team" },
+        { name: "Carrières", path: "/company/careers" },
+        { name: "Actualités", path: "/company/news" }
       ]
     },
     {
       title: "Support",
       links: [
-        "Contact",
-        "Documentation",
-        "FAQ",
-        "Mentions Légales"
+        { name: "Contact", path: "/support/contact" },
+        { name: "Documentation", path: "/support/documentation" },
+        { name: "FAQ", path: "/support/faq" },
+        { name: "Mentions Légales", path: "/support/legal" }
       ]
     }
   ];
@@ -68,8 +68,8 @@ export default function Footer() {
               <ul className="space-y-2 text-gray-300">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href="#" className="hover:text-white transition-colors">
-                      {link}
+                    <a href={link.path} className="hover:text-white transition-colors">
+                      {link.name}
                     </a>
                   </li>
                 ))}

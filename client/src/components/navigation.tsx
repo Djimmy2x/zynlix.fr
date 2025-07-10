@@ -1,6 +1,17 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +21,11 @@ export default function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
+  };
+
+  const navigateToPage = (path: string) => {
+    window.location.href = path;
     setIsMenuOpen(false);
   };
 
@@ -39,24 +55,90 @@ export default function Navigation() {
               >
                 Accueil
               </button>
-              <button
-                onClick={() => scrollToSection("services")}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => scrollToSection("apropos")}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium"
-              >
-                À Propos
-              </button>
+
+              {/* Services Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium">
+                    Services
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => navigateToPage("/services")}>
+                    Vue d'ensemble
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigateToPage("/services/infrastructure-cloud")}>
+                    Infrastructure & Cloud
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/services/security-backup")}>
+                    Sécurité & Sauvegarde
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/services/user-support")}>
+                    Support Utilisateurs
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/services/network-telecom")}>
+                    Réseau & Télécoms
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Entreprise Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium">
+                    Entreprise
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => navigateToPage("/company/about")}>
+                    À Propos
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/company/team")}>
+                    Équipe
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/company/careers")}>
+                    Carrières
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/company/news")}>
+                    Actualités
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <button
                 onClick={() => scrollToSection("references")}
                 className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium"
               >
                 Références
               </button>
+
+              {/* Support Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium">
+                    Support
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => navigateToPage("/support/contact")}>
+                    Contact
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/support/documentation")}>
+                    Documentation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/support/faq")}>
+                    FAQ
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigateToPage("/support/legal")}>
+                    Mentions Légales
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <ThemeToggle />
               <button
                 onClick={() => scrollToSection("contact")}
