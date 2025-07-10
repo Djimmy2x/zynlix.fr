@@ -78,17 +78,18 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 2.  **Cloner le projet depuis GitHub :**
     ```bash
-    git clone https://github.com/Djimmy2x/zynlix.fr.git .
+    git clone https://github.com/Djimmy2x/zynlix.fr.git zynlix
     ```
     
     **Note :** Si vous avez besoin d'authentification, utilisez votre token GitHub :
     ```bash
-    git clone https://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@github.com/Djimmy2x/zynlix.fr.git .
+    git clone https://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@github.com/Djimmy2x/zynlix.fr.git zynlix
     ```
 
 3.  **Installer les dépendances du projet :**
     ```bash
-    npm ci --only=production
+    # Installer toutes les dépendances (production + développement)
+    npm ci
     ```
 
 4.  **Configurer les variables d'environnement :**
@@ -124,6 +125,8 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```bash
     npm run build
     ```
+    
+    **Note :** Cette commande compile à la fois le frontend (Vite) et le backend (esbuild).
 
 6.  **Vérifier que le fichier de sortie existe :**
     ```bash
@@ -256,7 +259,7 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
 
 3.  **Installer les nouvelles dépendances :**
     ```bash
-    npm ci --only=production
+    npm ci
     ```
 
 4.  **Recompiler l'application :**
