@@ -1,8 +1,8 @@
-# TechnoGarde IT Services Website
+# Zynlix IT Services Website
 
 ## Overview
 
-This is a full-stack web application for TechnoGarde, a French IT managed services company. The project is built as a showcase website designed to inspire trust and reliability in potential clients while presenting the company's IT infrastructure management services.
+This is a full-stack web application for Zynlix, a French IT managed services company. The project is built as a showcase website designed to inspire trust and reliability in potential clients while presenting the company's IT infrastructure management services.
 
 ## User Preferences
 
@@ -144,3 +144,13 @@ Preferred communication style: Simple, everyday language.
 - Enhanced data persistence and reliability
 
 The application follows a monorepo structure with shared TypeScript types and clear separation between client and server code. The design emphasizes trust and professionalism through its blue-green color scheme and modern UI components.
+
+## Recent Changes (January 2025)
+
+### Brand Identity Update (✓ Completed)
+1. **Company Rebranding**:
+   - Renamed from "TechnoGarde" to "Zynlix" across all components
+   - Updated navigation to use logo-only button for homepage navigation
+   - Removed company name text from header, keeping only interactive logo
+   - Updated all testimonials and content references to new brand name
+   - Maintained all existing functionality with new brand identity

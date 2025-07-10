@@ -26,10 +26,10 @@ export default function About() {
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <div className="mb-12 lg:mb-0 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              À Propos de TechnoGarde
+              À Propos de Zynlix
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              Depuis plus de 15 ans, TechnoGarde accompagne les entreprises dans la gestion et l'optimisation de leur infrastructure informatique. Notre expertise et notre approche proactive nous permettent d'offrir des solutions sur mesure, adaptées aux besoins spécifiques de chaque client.
+              Depuis plus de 15 ans, Zynlix accompagne les entreprises dans la gestion et l'optimisation de leur infrastructure informatique. Notre expertise et notre approche proactive nous permettent d'offrir des solutions sur mesure, adaptées aux besoins spécifiques de chaque client.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
               Nous combinons innovation technologique et excellence opérationnelle pour garantir la continuité et la performance de votre système d'information, tout en optimisant vos coûts IT.

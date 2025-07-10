@@ -5,7 +5,7 @@ export default function References() {
     {
       name: "Jean-Pierre Moreau",
       role: "DG, Entreprise Moreau",
-      content: "TechnoGarde a transformé notre infrastructure IT. Leur expertise et leur réactivité nous ont permis de nous concentrer sur notre cœur de métier en toute sérénité.",
+      content: "Zynlix a transformé notre infrastructure IT. Leur expertise et leur réactivité nous ont permis de nous concentrer sur notre cœur de métier en toute sérénité.",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
     },
     {
@@ -17,7 +17,7 @@ export default function References() {
     {
       name: "Philippe Lambert",
       role: "PDG, Solutions Pro",
-      content: "Depuis que nous avons confié notre infogérance à TechnoGarde, nous avons divisé par deux nos incidents et nos coûts de maintenance.",
+      content: "Depuis que nous avons confié notre infogérance à Zynlix, nous avons divisé par deux nos incidents et nos coûts de maintenance.",
       image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100"
     }
   ];

@@ -42,7 +42,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">TechnoGarde</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Zynlix</h3>
             <p className="text-gray-300 mb-4">
               Votre partenaire de confiance pour tous vos besoins en infogérance et services informatiques.
             </p>
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 TechnoGarde. Tous droits réservés.</p>
+          <p>&copy; 2024 Zynlix. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
