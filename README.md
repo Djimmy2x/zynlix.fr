@@ -104,6 +104,9 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     
     # Recompiler avec la nouvelle configuration esbuild
     npm run build
+    
+    # Vérifier que le build a fonctionné
+    ls -la dist/index.js
     ```
     ```
 
@@ -114,8 +117,11 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     ```
     Ajoutez les variables nécessaires :
     ```ini
-    # Base de données
-    DATABASE_URL="VOTRE_URL_DE_BASE_DE_DONNEES_POSTGRESQL"
+    # Base de données (pour test, utilisez une URL factice)
+    DATABASE_URL="postgresql://test:test@localhost:5432/zynlix"
+    
+    # Alternative pour test sans base de données :
+    # NODE_ENV=development
     
     # Configuration de l'application
     NODE_ENV=production
@@ -123,12 +129,12 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     HOST=0.0.0.0
     
     # Sécurité (générez des clés sécurisées)
-    JWT_SECRET="votre_jwt_secret_tres_securise"
-    SESSION_SECRET="votre_session_secret_tres_securise"
+    JWT_SECRET="zynlix_jwt_secret_2024"
+    SESSION_SECRET="zynlix_session_secret_2024"
     
     # Authentification Admin
     ADMIN_USERNAME="admin"
-    ADMIN_PASSWORD="votre_mot_de_passe_admin_securise"
+    ADMIN_PASSWORD="zynlix_admin_2024"
     ```
     
     **Sécuriser le fichier :**
@@ -179,6 +185,11 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     **Important :** Si PM2 donne l'erreur "No script path", utilisez cette commande alternative :
     ```bash
     pm2 start ./dist/index.js --name zynlix-app
+    ```
+    
+    **Vérifier les logs après démarrage :**
+    ```bash
+    pm2 logs zynlix-app --lines 20
     ```
 
 2.  **Créer le dossier des logs :**
