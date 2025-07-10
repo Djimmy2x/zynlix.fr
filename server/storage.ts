@@ -1,4 +1,7 @@
 import { users, contactSubmissions, type User, type InsertUser, type ContactSubmission, type InsertContactSubmission } from "@shared/schema";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -43,7 +46,10 @@ export class MemStorage implements IStorage {
     const contactSubmission: ContactSubmission = { 
       ...submission, 
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      entreprise: submission.entreprise || null,
+      telephone: submission.telephone || null,
+      service: submission.service || null
     };
     this.contactSubmissions.set(id, contactSubmission);
     return contactSubmission;
@@ -54,4 +60,44 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database Storage Implementation
+export class DatabaseStorage implements IStorage {
+  private db: ReturnType<typeof drizzle>;
+
+  constructor() {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL environment variable is required");
+    }
+    const sql = neon(process.env.DATABASE_URL);
+    this.db = drizzle(sql);
+  }
+
+  async getUser(id: number): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.id, id));
+    return result[0];
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const result = await this.db.select().from(users).where(eq(users.username, username));
+    return result[0];
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const result = await this.db.insert(users).values(insertUser).returning();
+    return result[0];
+  }
+
+  async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
+    const result = await this.db.insert(contactSubmissions).values(submission).returning();
+    return result[0];
+  }
+
+  async getAllContactSubmissions(): Promise<ContactSubmission[]> {
+    return await this.db.select().from(contactSubmissions);
+  }
+}
+
+// Use DatabaseStorage if DATABASE_URL is available, otherwise fallback to MemStorage
+export const storage = process.env.DATABASE_URL 
+  ? new DatabaseStorage() 
+  : new MemStorage();
