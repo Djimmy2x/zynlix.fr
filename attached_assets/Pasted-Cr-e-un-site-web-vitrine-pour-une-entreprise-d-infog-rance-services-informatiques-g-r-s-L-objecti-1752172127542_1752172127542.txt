@@ -1,0 +1,34 @@
+Crée un site web vitrine pour une entreprise d'infogérance (services informatiques gérés). L'objectif principal du site est d'inspirer la confiance et la fiabilité aux clients potentiels, tout en présentant une image moderne et innovante.
+
+Palette de couleurs :
+Utilise une palette de couleurs équilibrée et rassurante, en privilégiant fortement les nuances de bleu (pour la confiance, la sécurité et le professionnalisme) et de vert (pour la croissance, la stabilité et la fiabilité). Intègre également des couleurs neutres comme le blanc et différentes teintes de gris pour apporter de la clarté, de la sobriété et de l'élégance, et pour mettre en valeur les éléments clés. Évite les couleurs trop vives ou agressives qui pourraient nuire à l'impression de sérieux.
+
+Design UX (Expérience Utilisateur) :
+Le design UX doit être cohérent, intuitif, rassurant et innovant :
+
+Cohérence visuelle : Assure une uniformité graphique sur toutes les pages (typographie, espacements, icônes, styles des boutons).
+
+Navigation intuitive : Propose une structure de navigation claire et simple, permettant aux visiteurs de trouver facilement l'information recherchée. Un menu principal bien organisé et des appels à l'action (CTA) clairs sont essentiels.
+
+Rassurance :
+
+Mets en avant des éléments qui inspirent confiance : témoignages clients, logos de partenaires, certifications, chiffres clés (années d'expérience, clients satisfaits).
+
+Utilise des espaces blancs généreux pour une sensation de clarté et de professionnalisme.
+
+Les visuels (photos, illustrations) doivent être de haute qualité et refléter le professionnalisme et l'expertise de l'infogérant. Évite les images génériques et opte pour des représentations authentiques et modernes.
+
+Innovation :
+
+Intègre des micro-interactions subtiles et fluides pour une expérience utilisateur dynamique et engageante sans être intrusive.
+
+Le design doit être moderne et épuré, reflétant une entreprise à la pointe de la technologie.
+
+Pense à des animations légères et des transitions douces pour un aspect plus contemporain.
+
+Le site doit être entièrement responsive et offrir une expérience optimale sur tous les appareils (ordinateurs, tablettes, mobiles).
+
+Contenu (à titre indicatif pour le design) :
+Le site devrait inclure des sections typiques d'un site vitrine : Accueil, Services (détaillés), À Propos (présentation de l'entreprise et de l'équipe), Références/Témoignages, Contact.
+
+L'objectif est de créer un site qui non seulement informe, mais aussi établit immédiatement un lien de confiance avec le visiteur, le positionnant comme un partenaire fiable et avant-gardiste dans le domaine de l'infogérance.
