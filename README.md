@@ -144,11 +144,11 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     
     Contenu du fichier :
     ```javascript
-    module.exports = {
+    export default {
       apps: [{
         name: 'zynlix-app',
         script: 'dist/index.js',
-        cwd: '/home/zynlix',
+        cwd: '/home/zynlix/zynlix',
         user: 'zynlix',
         instances: 1,
         autorestart: true,
@@ -158,9 +158,9 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
           NODE_ENV: 'production',
           PORT: 3000
         },
-        error_file: '/home/zynlix/logs/err.log',
-        out_file: '/home/zynlix/logs/out.log',
-        log_file: '/home/zynlix/logs/combined.log',
+        error_file: '/home/zynlix/zynlix/logs/err.log',
+        out_file: '/home/zynlix/zynlix/logs/out.log',
+        log_file: '/home/zynlix/zynlix/logs/combined.log',
         time: true
       }]
     };
