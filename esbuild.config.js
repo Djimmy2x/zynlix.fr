@@ -38,10 +38,15 @@ await build({
     'tailwindcss-animate',
     'class-variance-authority',
     'clsx',
-    'tailwind-merge'
+    'tailwind-merge',
+    // Additional problematic modules
+    'ws',
+    'bufferutil',
+    'utf-8-validate'
   ],
   define: {
     'process.env.NODE_ENV': '"development"'
   },
-  logLevel: 'info'
+  logLevel: 'info',
+  sourcemap: true
 }); 

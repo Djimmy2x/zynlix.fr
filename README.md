@@ -203,6 +203,10 @@ Connectez-vous à votre serveur en SSH et exécutez les commandes suivantes.
     # 3. Recompiler avec le mode développement
     npm run build
     
+    # Si erreur de module manquant, nettoyer et recompiler
+    rm -rf dist/
+    npm run build
+    
     # 4. Tester directement
     node dist/index.js
     
