@@ -1,83 +1,59 @@
-import { Button } from "@/components/ui/button";
-import { AnimatedBackground } from "@/components/ui/animated-background";
+import { Button } from "./simple-button";
 
 export default function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="accueil" className="relative bg-gradient-to-br from-[hsl(var(--light-blue))] to-white dark:from-gray-800 dark:to-gray-900 py-20 overflow-hidden">
-      {/* GIF animé en arrière-plan subtil */}
-      <AnimatedBackground
-        gifSrc="ACCEUIL.gif"
-        alt="Animation d'accueil dynamique"
-        opacity={0.08}
-        position="top-right"
-        size="large"
-        className="animate-pulse"
-      />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-          <div className="mb-12 lg:mb-0 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Votre Partenaire de{" "}
-              <span className="text-primary">Confiance</span> en Infogérance
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Nous gérons votre infrastructure IT pour que vous puissiez vous concentrer sur votre cœur de métier. Solutions sécurisées, innovantes et fiables.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={() => scrollToSection("services")}
-                className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent transition-all duration-200 hover:scale-105"
-              >
-                Découvrir nos services
-              </Button>
-              <Button
-                onClick={() => scrollToSection("contact")}
-                variant="outline"
-                className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-200"
-              >
-                Demander un devis
-              </Button>
-            </div>
-            <div className="mt-12 flex items-center space-x-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">15+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Années d'expérience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-secondary">500+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Clients satisfaits</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">24/7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Support technique</div>
-              </div>
-            </div>
+    <section id="accueil" className="relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            Votre Partenaire
+            <span className="text-blue-600 dark:text-blue-400"> Informatique</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            Zynlix vous accompagne dans la transformation numérique de votre entreprise avec des solutions d'infogérance sur mesure.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={() => {
+                const element = document.getElementById("services");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              Découvrir nos services
+            </Button>
+            <Button
+              onClick={() => {
+                const element = document.getElementById("contact");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              variant="outline"
+              size="lg"
+              className="border-blue-600 text-blue-600 hover:bg-blue-50"
+            >
+              Contactez-nous
+            </Button>
           </div>
-          <div className="relative animate-fade-in-scale">
-            <picture>
-              <source 
-                srcSet="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&fm=webp&q=80" 
-                type="image/webp" 
-              />
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600&q=80"
-                alt="Modern IT office workspace"
-                className="rounded-xl shadow-2xl w-full h-auto transform hover:scale-105 transition-transform duration-300"
-                loading="eager"
-                decoding="async"
-                width="800"
-                height="600"
-              />
-            </picture>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-xl"></div>
+        </div>
+        
+        {/* Stats */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">500+</div>
+            <div className="text-gray-600 dark:text-gray-300">Clients satisfaits</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
+            <div className="text-gray-600 dark:text-gray-300">Disponibilité</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
+            <div className="text-gray-600 dark:text-gray-300">Support technique</div>
           </div>
         </div>
       </div>
